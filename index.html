@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be The 1% - Trading Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+        }
+        
+        .testimonial {
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            opacity: 0.2;
+            color: #38bdf8;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 200px;
+            width: 100%;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li i {
+            margin-right: 0.5rem;
+            color: #38bdf8;
+        }
+        
+        .language-switcher {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .flag {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .language-switcher:hover .flag {
+            transform: scale(1.1);
+        }
+
+    .mobile-nav-link {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+    
+    .mobile-nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Header -->
+    <header class="py-6 px-4 sm:px-6 lg:px-8 border-b border-slate-700">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="h-10 w-10 rounded-full bg-gradient-to-r from-sky-400 to-indigo-400 flex items-center justify-center mr-3">
+                    <i class="fas fa-chart-line text-white"></i>
+                </div>
+                <h1 class="text-2xl font-bold">Be The 1%</h1>
+            </div>
+            <nav class="hidden md:flex items-center">
+                <ul class="flex space-x-8 mr-6">
+                    <li><a href="#servizi" class="hover:text-sky-400 transition-colors lang-it">Servizi</a><a href="#servizi" class="hover:text-sky-400 transition-colors lang-en hidden">Services</a></li>
+                    <li><a href="#risultati" class="hover:text-sky-400 transition-colors lang-it">Risultati</a><a href="#risultati" class="hover:text-sky-400 transition-colors lang-en hidden">Results</a></li>
+                    <li><a href="#testimonianze" class="hover:text-sky-400 transition-colors lang-it">Testimonianze</a><a href="#testimonianze" class="hover:text-sky-400 transition-colors lang-en hidden">Testimonials</a></li>
+                    <li><a href="#piani" class="hover:text-sky-400 transition-colors lang-it">Piani</a><a href="#piani" class="hover:text-sky-400 transition-colors lang-en hidden">Plans</a></li>
+                </ul>
+                <div class="language-switcher" id="languageSwitcher">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzIDIiPjxwYXRoIGZpbGw9IiMwMDkyNDYiIGQ9Ik0wIDBoMXYySDB6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEgMGgxdjJIMXoiLz48cGF0aCBmaWxsPSIjY2UyYjM3IiBkPSJNMiAwaDF2MkgyeiIvPjwvc3ZnPg==" alt="Italiano" class="flag" id="italianFlag">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjM1IDY1MCIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KPGRlZnM+DQo8ZyBpZD0idW5pb24iPg0KPHVzZSB5PSItLjIxNiIgeGxpbms6aHJlZj0iI3g0Ii8+DQo8dXNlIHhsaW5rOmhyZWY9IiN4NCIvPg0KPHVzZSB5PSIuMjE2IiB4bGluazpocmVmPSIjczYiLz4NCjwvZz4NCjxnIGlkPSJ4NCI+DQo8dXNlIHhsaW5rOmhyZWY9IiNzNiIvPg0KPHVzZSB5PSIuMDU0IiB4bGluazpocmVmPSIjczUiLz4NCjx1c2UgeT0iLjEwOCIgeGxpbms6aHJlZj0iI3M2Ii8+DQo8dXNlIHk9Ii4xNjIiIHhsaW5rOmhyZWY9IiNzNSIvPg0KPC9nPg0KPGcgaWQ9InM1Ij4NCjx1c2UgeD0iLS4yNTIiIHhsaW5rOmhyZWY9IiNzdGFyIi8+DQo8dXNlIHg9Ii0uMTI2IiB4bGluazpocmVmPSIjc3RhciIvPg0KPHVzZSB4bGluazpocmVmPSIjc3RhciIvPg0KPHVzZSB4PSIuMTI2IiB4bGluazpocmVmPSIjc3RhciIvPg0KPHVzZSB4PSIuMjUyIiB4bGluazpocmVmPSIjc3RhciIvPg0KPC9nPg0KPGcgaWQ9InM2Ij4NCjx1c2UgeD0iLS4wNjMiIHhsaW5rOmhyZWY9IiNzNSIvPg0KPHVzZSB4PSIuMzE1IiB4bGluazpocmVmPSIjc3RhciIvPg0KPC9nPg0KPGcgaWQ9InN0YXIiPg0KPHVzZSB4bGluazpocmVmPSIjcHQiIHRyYW5zZm9ybT0ibWF0cml4KC0uODA5MDIgLS41ODc3OSAuNTg3NzkgLS44MDkwMiAwIDApIi8+DQo8dXNlIHhsaW5rOmhyZWY9IiNwdCIgdHJhbnNmb3JtPSJtYXRyaXgoLjMwOTAyIC0uOTUxMDYgLjk1MTA2IC4zMDkwMiAwIDApIi8+DQo8dXNlIHhsaW5rOmhyZWY9IiNwdCIvPg0KPHVzZSB4bGluazpocmVmPSIjcHQiIHRyYW5zZm9ybT0icm90YXRlKDcyKSIvPg0KPHVzZSB4bGluazpocmVmPSIjcHQiIHRyYW5zZm9ybT0icm90YXRlKDE0NCkiLz4NCjwvZz4NCjxwYXRoIGZpbGw9IiNmZmYiIGlkPSJwdCIgZD0iTS0uMTYyNSwwIDAtLjUgLjE2MjUsMHoiIHRyYW5zZm9ybT0ic2NhbGUoLjA2MTYpIi8+DQo8cGF0aCBmaWxsPSIjYmYwYTMwIiBpZD0ic3RyaXBlIiBkPSJtMCwwaDEyMzV2NTBoLTEyMzV6Ii8+DQo8L2RlZnM+DQo8cGF0aCBmaWxsPSIjZmZmIiBkPSJtMCwwaDEyMzV2NjUwaC0xMjM1eiIvPg0KPHVzZSB4bGluazpocmVmPSIjc3RyaXBlIi8+DQo8dXNlIHk9IjEwMCIgeGxpbms6aHJlZj0iI3N0cmlwZSIvPg0KPHVzZSB5PSIyMDAiIHhsaW5rOmhyZWY9IiNzdHJpcGUiLz4NCjx1c2UgeT0iMzAwIiB4bGluazpocmVmPSIjc3RyaXBlIi8+DQo8dXNlIHk9IjQwMCIgeGxpbms6aHJlZj0iI3N0cmlwZSIvPg0KPHVzZSB5PSI1MDAiIHhsaW5rOmhyZWY9IiNzdHJpcGUiLz4NCjx1c2UgeT0iNjAwIiB4bGluazpocmVmPSIjc3RyaXBlIi8+DQo8cGF0aCBmaWxsPSIjMDAyODY4IiBkPSJtMCwwaDQ5NHYzNTBoLTQ5NHoiLz4NCjx1c2UgeGxpbms6aHJlZj0iI3VuaW9uIiB0cmFuc2Zvcm09Im1hdHJpeCg2NTAgMCAwIDY1MCAyNDcgMTc1KSIvPg0KPC9zdmc+DQo=" alt="English" class="flag hidden" id="englishFlag">
+                </div>
+            </nav>
+<button class="md:hidden flex items-center p-2" id="mobileMenuButton">
+    <i class="fas fa-bars text-xl"></i>
+</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 lang-it">Entra nella <span class="gradient-text">Community dell'1%</span></h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 lang-en hidden">Join the <span class="gradient-text">1% Community</span></h2>
+            
+            <p class="text-xl text-slate-300 mb-10 max-w-3xl mx-auto lang-it">Unisciti gratis alla nostra community di trader, appassionati di crypto, coding e gaming. Scopri indicatori esclusivi e strategie come i Bullet & Time Shot per rivoluzionare il tuo modo di fare trading.</p>
+            <p class="text-xl text-slate-300 mb-10 max-w-3xl mx-auto lang-en hidden">Join our free community of traders, crypto enthusiasts, coders, and gamers. Discover exclusive indicators and strategies like Bullet & Time Shot to revolutionize your trading approach.</p>
+            
+            <div class="relative inline-block floating">
+                <div class="absolute inset-0 bg-gradient-to-r from-sky-400 to-indigo-400 rounded-lg blur opacity-50 -z-10"></div>
+                <a href="https://discord.gg/78g75d5pXj" target="_blank" class="btn-primary px-8 py-4 rounded-lg font-semibold text-white inline-block pulse">
+                    <span class="lang-it">Unisciti Ora</span>
+                    <span class="lang-en hidden">Join Now</span>
+                    <i class="fab fa-discord ml-2"></i>
+                </a>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stat-card rounded-xl p-6 text-center">
+                    <div class="text-4xl font-bold text-sky-400 mb-2">150+</div>
+                    <p class="text-slate-300 lang-it">Membri attivi</p>
+                    <p class="text-slate-300 lang-en hidden">Active members</p>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center">
+                    <div class="text-4xl font-bold text-sky-400 mb-2">3+</div>
+                    <p class="text-slate-300 lang-it">Indicatori esclusivi</p>
+                    <p class="text-slate-300 lang-en hidden">Exclusive indicators</p>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center">
+                    <div class="text-4xl font-bold text-sky-400 mb-2">24/7</div>
+                    <p class="text-slate-300 lang-it">Supporto community</p>
+                    <p class="text-slate-300 lang-en hidden">Community support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servizi -->
+    <section id="servizi" class="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center lang-it">I Nostri <span class="gradient-text">Servizi</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-center lang-en hidden">Our <span class="gradient-text">Services</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card rounded-xl p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-sky-400/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-bar text-2xl text-sky-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 lang-it">Trading</h3>
+                    <h3 class="text-xl font-semibold mb-3 lang-en hidden">Trading</h3>
+                    
+                    <p class="text-slate-300 mb-4 lang-it">Accedi all’indicatore Bullet & Time Shot e migliora drasticamente i tuoi risultati di trading.</p>
+                    <p class="text-slate-300 mb-4 lang-en hidden">Access the Bullet & Time Shot indicator and drastically improve your trading results.</p>
+                    
+                    <ul class="text-left text-slate-300 mb-6 space-y-2 w-full">
+                        <li class="flex items-center"><i class="fas fa-check text-sky-400 mr-2"></i> <span class="lang-it">Indicatori esclusivi</span><span class="lang-en hidden">Exclusive indicators</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-sky-400 mr-2"></i> <span class="lang-it">Analisi di mercato</span><span class="lang-en hidden">Market analysis</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-sky-400 mr-2"></i> <span class="lang-it">Supporto personalizzato</span><span class="lang-en hidden">Personalized support</span></li>
+                    </ul>
+                </div>
+                
+                <div class="card rounded-xl p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-indigo-400/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-2xl text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 lang-it">Crypto & Coding</h3>
+                    <h3 class="text-xl font-semibold mb-3 lang-en hidden">Crypto & Coding</h3>
+                    
+                    <p class="text-slate-300 mb-4 lang-it">Esplora il mondo delle criptovalute e impara le basi della programmazione.</p>
+                    <p class="text-slate-300 mb-4 lang-en hidden">Explore the world of cryptocurrencies and learn the basics of programming.</p>
+                    
+                    <ul class="text-left text-slate-300 mb-6 space-y-2 w-full">
+                        <li class="flex items-center"><i class="fas fa-check text-indigo-400 mr-2"></i> <span class="lang-it">Analisi crypto</span><span class="lang-en hidden">Crypto analysis</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-indigo-400 mr-2"></i> <span class="lang-it">Progetti emergenti</span><span class="lang-en hidden">Emerging projects</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-indigo-400 mr-2"></i> <span class="lang-it">Basi di coding</span><span class="lang-en hidden">Coding basics</span></li>
+                    </ul>
+                </div>
+                
+                <div class="card rounded-xl p-6 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-purple-400/20 flex items-center justify-center mb-4">
+                        <i class="fas fa-gamepad text-2xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 lang-it">Gaming</h3>
+                    <h3 class="text-xl font-semibold mb-3 lang-en hidden">Gaming</h3>
+                    
+                    <p class="text-slate-300 mb-4 lang-it">Rilassati e divertiti con altri membri della community nei nostri eventi di gaming.</p>
+                    <p class="text-slate-300 mb-4 lang-en hidden">Relax and have fun with other community members in our gaming events.</p>
+                    
+                    <ul class="text-left text-slate-300 mb-6 space-y-2 w-full">
+                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2"></i> <span class="lang-it">Eventi settimanali</span><span class="lang-en hidden">Weekly events</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2"></i> <span class="lang-it">Tornei con premi</span><span class="lang-en hidden">Tournaments with prizes</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-purple-400 mr-2"></i> <span class="lang-it">Sessioni multiplayer</span><span class="lang-en hidden">Multiplayer sessions</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risultati -->
+    <section id="risultati" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center lang-it">I Nostri <span class="gradient-text">Risultati</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-center lang-en hidden">Our <span class="gradient-text">Results</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 lang-it">Performance con i Bullet & Time Shot</h3>
+                    <h3 class="text-xl font-semibold mb-4 lang-en hidden">Performance with the Bullet & Time Shot</h3>
+                    <div class="chart-container" id="performanceChart"></div>
+                    <div class="mt-4 grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <p class="text-sky-400 font-bold text-xl">+4.2%</p>
+                            <p class="text-slate-300 text-sm lang-it">Ultimo mese</p>
+                            <p class="text-slate-300 text-sm lang-en hidden">Last month</p>
+                        </div>
+                        <div>
+                            <p class="text-sky-400 font-bold text-xl">+12.7%</p>
+                            <p class="text-slate-300 text-sm lang-it">Ultimo trimestre</p>
+                            <p class="text-slate-300 text-sm lang-en hidden">Last quarter</p>
+                        </div>
+                        <div>
+                            <p class="text-sky-400 font-bold text-xl">+31.2%</p>
+                            <p class="text-slate-300 text-sm lang-it">Ultimo anno</p>
+                            <p class="text-slate-300 text-sm lang-en hidden">Last year</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-6">
+                    <h3 class="text-xl font-semibold mb-4 lang-it">Operazioni di Successo</h3>
+                    <h3 class="text-xl font-semibold mb-4 lang-en hidden">Successful Operations</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-slate-800/50 rounded-lg">
+                            <div>
+                                <p class="font-medium">NAS100</p>
+                                <p class="text-sm text-slate-300 lang-it">Long Position</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Long Position</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-green-400 font-bold">+2.3%</p>
+                                <p class="text-sm text-slate-300 lang-it">2 giorni fa</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">2 days ago</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-slate-800/50 rounded-lg">
+                            <div>
+                                <p class="font-medium">XAUUSD</p>
+                                <p class="text-sm text-slate-300 lang-it">Short Position</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Short Position</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-green-400 font-bold">+1.8%</p>
+                                <p class="text-sm text-slate-300 lang-it">1 settimana fa</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">1 week ago</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-slate-800/50 rounded-lg">
+                            <div>
+                                <p class="font-medium">EURUSD</p>
+                                <p class="text-sm text-slate-300 lang-it">Long Position</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Long Position</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-green-400 font-bold">+1.2%</p>
+                                <p class="text-sm text-slate-300 lang-it">2 settimane fa</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">2 weeks ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonianze -->
+    <section id="testimonianze" class="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center lang-it">Cosa Dicono i Nostri <span class="gradient-text">Membri</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-center lang-en hidden">What Our <span class="gradient-text">Members</span> Say</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">Da quando ho trovato questa community i membri sono sempre presenti e super disponibili. Un ambiente davvero stimolante per chi vuole crescere nel trading.</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">Since I found this community, members are always present and super helpful. A truly stimulating environment for those who want to grow in trading.</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-sky-400/20 flex items-center justify-center mr-3">
+                                <span class="text-sky-400 font-bold">A</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Giovanni N.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 4 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 4 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">L'indicatore Bullet & Time Shot mi ha cambiato completamente l'approccio al trading. Ora riesco a individuare entry point che prima mi sfuggivano completamente.</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">The Bullet & Time Shot indicator has completely changed my approach to trading. Now I can identify entry points that I completely missed before.</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-indigo-400/20 flex items-center justify-center mr-3">
+                                <span class="text-indigo-400 font-bold">F</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Nicole C.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 7 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 7 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">I piani VIP, VIP+ e VIP++ sono fantastici e super comodi per chi vuole fare un upgrade. Ho iniziato con il piano base e ora sono passato al VIP+, ne vale assolutamente la pena.</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">The VIP, VIP+ and VIP++ plans are fantastic and super convenient for those who want to upgrade. I started with the basic plan and now I've moved to VIP+, it's absolutely worth it.</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-purple-400/20 flex items-center justify-center mr-3">
+                                <span class="text-purple-400 font-bold">M</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Andrea N.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 5 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 5 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">Grazie all'indicatore automatizzato ho potuto ridurre drasticamente il tempo che dedico all'analisi dei grafici. I risultati sono stati immediati e costanti nel tempo.</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">Thanks to the automated indicator, I've been able to drastically reduce the time I spend analyzing charts. The results were immediate and consistent over time.</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-sky-400/20 flex items-center justify-center mr-3">
+                                <span class="text-sky-400 font-bold">L</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Salvatore M.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 3 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 3 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">Non è solo una community di trading, ma un vero gruppo di amici. Tra sessioni di gaming e discussioni su crypto, ho trovato un ambiente completo dove imparare e divertirmi.</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">It's not just a trading community, but a real group of friends. Between gaming sessions and crypto discussions, I found a complete environment where I can learn and have fun.</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-indigo-400/20 flex items-center justify-center mr-3">
+                                <span class="text-indigo-400 font-bold">S</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Matteo A.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 6 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 6 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">Il supporto della community è incredibile. Ogni volta che ho un dubbio c'è sempre qualcuno pronto ad aiutarmi, anche a tarda notte!</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">The community support is incredible. Every time I have a doubt, there's always someone ready to help me, even late at night!</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-purple-400/20 flex items-center justify-center mr-3">
+                                <span class="text-purple-400 font-bold">G</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Mirko B.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 2 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 2 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">Ho provato diversi indicatori in passato, ma Bullet & Time Shot è di un altro livello. La precisione con cui identifica i punti di ingresso è impressionante.</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">I've tried different indicators in the past, but Bullet & Time Shot is on another level. The precision with which it identifies entry points is impressive.</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-sky-400/20 flex items-center justify-center mr-3">
+                                <span class="text-sky-400 font-bold">R</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Mariagrazia S.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 8 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 8 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card rounded-xl p-6">
+                    <div class="testimonial">
+                        <p class="text-slate-300 mb-4 lang-it">L'upgrade al piano VIP++ è stata la migliore decisione che abbia preso. Gli indicatori avanzati hanno migliorato la mia profittabilità del 15% in soli due mesi.</p>
+                        <p class="text-slate-300 mb-4 lang-en hidden">Upgrading to the VIP++ plan was the best decision I've made. The advanced indicators have improved my profitability by 15% in just two months.</p>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-indigo-400/20 flex items-center justify-center mr-3">
+                                <span class="text-indigo-400 font-bold">D</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Francesca P.</p>
+                                <p class="text-sm text-slate-400 lang-it">Membro da 9 mesi</p>
+                                <p class="text-sm text-slate-400 lang-en hidden">Member for 9 months</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Piani -->
+    <section id="piani" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center lang-it">Scegli il Tuo <span class="gradient-text">Piano</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-center lang-en hidden">Choose Your <span class="gradient-text">Plan</span></h2>
+            
+            <div class="text-center mb-8">
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto lang-it">Tutti i piani includono i seguenti pair: <span class="text-sky-400 font-semibold">NAS100 – XAUUSD – EURUSD</span></p>
+                <p class="text-xl text-slate-300 max-w-3xl mx-auto lang-en hidden">All plans include the following pairs: <span class="text-sky-400 font-semibold">NAS100 – XAUUSD – EURUSD</span></p>
+                
+                <p class="text-slate-300 mt-2 lang-it">È possibile aggiungere altri pair personalizzati al proprio piano, con un costo aggiuntivo.</p>
+                <p class="text-slate-300 mt-2 lang-en hidden">It's possible to add other customized pairs to your plan, with an additional cost.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- VIP -->
+                <div class="card rounded-xl p-6 border border-slate-700 relative">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-semibold">VIP</h3>
+                        <div class="mt-4 space-y-2">
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Settimanale</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Weekly</p>
+                                <p class="text-2xl font-bold">€14,99</p>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Mensile</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Monthly</p>
+                                <p class="text-2xl font-bold">€54,99</p>
+                                <p class="text-xs text-sky-400 lang-it">Risparmi €5,01</p>
+                                <p class="text-xs text-sky-400 lang-en hidden">Save €5.01</p>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Trimestrale</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Quarterly</p>
+                                <p class="text-2xl font-bold">€149,99</p>
+                                <p class="text-xs text-sky-400 lang-it">Risparmi €30,01</p>
+                                <p class="text-xs text-sky-400 lang-en hidden">Save €30.01</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-2 lang-it">Caratteristiche:</h4>
+                        <h4 class="font-medium mb-2 lang-en hidden">Features:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Accesso ai Bullet Shot</span><span class="lang-en hidden">Access to Bullet Shot</span></li>
+                            <li><i class="fas fa-check"></i> <span>NAS100, XAUUSD, EURUSD</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Supporto lv. VIP</span><span class="lang-en hidden">VIP level support</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-2 lang-it">Pair aggiuntivi:</h4>
+                        <h4 class="font-medium mb-2 lang-en hidden">Additional pairs:</h4>
+                        <ul class="text-sm text-slate-300 lang-it">
+                            <li>• Settimanale: +€5 per pair</li>
+                            <li>• Mensile: +€10 per pair</li>
+                            <li>• Trimestrale: +€15 per pair</li>
+                        </ul>
+                        <ul class="text-sm text-slate-300 lang-en hidden">
+                            <li>• Weekly: +€5 per pair</li>
+                            <li>• Monthly: +€10 per pair</li>
+                            <li>• Quarterly: +€15 per pair</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://discord.gg/78g75d5pXj" target="_blank" class="w-full py-3 rounded-lg border border-sky-400 text-sky-400 font-medium hover:bg-sky-400/10 transition-colors block text-center">
+                        <span class="lang-it">Scegli Piano</span>
+                        <span class="lang-en hidden">Choose Plan</span>
+                    </a>
+                </div>
+                
+                <!-- VIP+ -->
+                <div class="card rounded-xl p-6 border-2 border-sky-400 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-sky-400 text-slate-900 px-4 py-1 rounded-full font-medium text-sm">
+                        <span class="lang-it">Più Popolare</span>
+                        <span class="lang-en hidden">Most Popular</span>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-semibold">VIP+</h3>
+                        <div class="mt-4 space-y-2">
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Settimanale</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Weekly</p>
+                                <p class="text-2xl font-bold">€24,99</p>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Mensile</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Monthly</p>
+                                <p class="text-2xl font-bold">€89,99</p>
+                                <p class="text-xs text-sky-400 lang-it">Risparmi €10,01</p>
+                                <p class="text-xs text-sky-400 lang-en hidden">Save €10.01</p>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Trimestrale</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Quarterly</p>
+                                <p class="text-2xl font-bold">€249,99</p>
+                                <p class="text-xs text-sky-400 lang-it">Risparmi €50,01</p>
+                                <p class="text-xs text-sky-400 lang-en hidden">Save €50.01</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-2 lang-it">Caratteristiche:</h4>
+                        <h4 class="font-medium mb-2 lang-en hidden">Features:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Accesso ai Bullet & Time Shot</span><span class="lang-en hidden">Access to Bullet & Time Shot</span></li>
+                            <li><i class="fas fa-check"></i> <span>NAS100, XAUUSD, EURUSD</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Supporto lv. VIP+</span><span class="lang-en hidden">VIP+ level support</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-2 lang-it">Pair aggiuntivi:</h4>
+                        <h4 class="font-medium mb-2 lang-en hidden">Additional pairs:</h4>
+                        <ul class="text-sm text-slate-300 lang-it">
+                            <li>• Settimanale: +€5 per pair</li>
+                            <li>• Mensile: +€10 per pair</li>
+                            <li>• Trimestrale: +€15 per pair</li>
+                        </ul>
+                        <ul class="text-sm text-slate-300 lang-en hidden">
+                            <li>• Weekly: +€5 per pair</li>
+                            <li>• Monthly: +€10 per pair</li>
+                            <li>• Quarterly: +€15 per pair</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://discord.gg/78g75d5pXj" target="_blank" class="w-full py-3 rounded-lg bg-gradient-to-r from-sky-400 to-indigo-400 text-white font-medium hover:shadow-lg hover:shadow-sky-400/20 transition-all block text-center">
+                        <span class="lang-it">Scegli Piano</span>
+                        <span class="lang-en hidden">Choose Plan</span>
+                    </a>
+                </div>
+                
+                <!-- VIP++ -->
+                <div class="card rounded-xl p-6 border border-slate-700 relative">
+                    <div class="text-center mb-6">
+                        <h3 class="text-xl font-semibold">VIP++</h3>
+                        <div class="mt-4 space-y-2">
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Settimanale</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Weekly</p>
+                                <p class="text-2xl font-bold">€49,99</p>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Mensile</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Monthly</p>
+                                <p class="text-2xl font-bold">€179,99</p>
+                                <p class="text-xs text-sky-400 lang-it">Risparmi €20,01</p>
+                                <p class="text-xs text-sky-400 lang-en hidden">Save €20.01</p>
+                            </div>
+                            <div class="bg-slate-800/50 rounded-lg p-3">
+                                <p class="text-sm text-slate-300 lang-it">Trimestrale</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Quarterly</p>
+                                <p class="text-2xl font-bold">€499,99</p>
+                                <p class="text-xs text-sky-400 lang-it">Risparmi €100,01</p>
+                                <p class="text-xs text-sky-400 lang-en hidden">Save €100.01</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-2 lang-it">Caratteristiche:</h4>
+                        <h4 class="font-medium mb-2 lang-en hidden">Features:</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Accesso ai Bullet & Time Shot Avanzati</span><span class="lang-en hidden">Access to Advanced Bullet & Time Shot</span></li>
+                            <li><i class="fas fa-check"></i> <span>NAS100, XAUUSD, EURUSD</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Supporto lv. VIP++</span><span class="lang-en hidden">VIP++ level support</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-2 lang-it">Pair aggiuntivi:</h4>
+                        <h4 class="font-medium mb-2 lang-en hidden">Additional pairs:</h4>
+                        <ul class="text-sm text-slate-300 lang-it">
+                            <li>• Settimanale: +€10 per pair</li>
+                            <li>• Mensile: +€15 per pair</li>
+                            <li>• Trimestrale: +€20 per pair</li>
+                        </ul>
+                        <ul class="text-sm text-slate-300 lang-en hidden">
+                            <li>• Weekly: +€10 per pair</li>
+                            <li>• Monthly: +€15 per pair</li>
+                            <li>• Quarterly: +€20 per pair</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://discord.gg/78g75d5pXj" target="_blank" class="w-full py-3 rounded-lg border border-indigo-400 text-indigo-400 font-medium hover:bg-indigo-400/10 transition-colors block text-center">
+                        <span class="lang-it">Scegli Piano</span>
+                        <span class="lang-en hidden">Choose Plan</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- VIP Indicator -->
+            <div class="mt-10">
+                <div class="card rounded-xl p-6 border border-slate-700 max-w-2xl mx-auto relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br from-sky-400 to-indigo-600 opacity-20 rounded-full"></div>
+                    <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-gradient-to-tr from-indigo-400 to-purple-600 opacity-20 rounded-full"></div>
+                    
+                    <div class="text-center mb-6 relative">
+                        <h3 class="text-2xl font-semibold">VIP Indicator</h3>
+                        <p class="text-slate-300 mt-2 lang-it">Accesso all'indicatore automatizzato Bullet & Time Shot</p>
+                        <p class="text-slate-300 mt-2 lang-en hidden">Access to the automated Bullet & Time Shot indicator</p>
+                        <div class="mt-4">
+                            <div class="bg-slate-800/50 rounded-lg p-4 inline-block min-w-[200px]">
+                                <p class="text-sm text-slate-300 lang-it">Mensile</p>
+                                <p class="text-sm text-slate-300 lang-en hidden">Monthly</p>
+                                <p class="text-3xl font-bold">€399,99</p>
+                                <p class="text-sm text-sky-400 lang-it">Risparmi €100,01</p>
+                                <p class="text-sm text-sky-400 lang-en hidden">Save €100.01</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 max-w-md mx-auto">
+                        <h4 class="font-medium mb-2 text-center lang-it">Caratteristiche Premium:</h4>
+                        <h4 class="font-medium mb-2 text-center lang-en hidden">Premium Features:</h4>
+                        <ul class="feature-list grid grid-cols-1 md:grid-cols-2 gap-x-4">
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Indicatore completamente automatizzato</span><span class="lang-en hidden">Fully automated indicator</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Tutti i pair disponibili</span><span class="lang-en hidden">All pairs available</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Aggiornamenti prioritari</span><span class="lang-en hidden">Priority updates</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Supporto tecnico dedicato</span><span class="lang-en hidden">Dedicated technical support</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Sessioni one-to-one</span><span class="lang-en hidden">One-to-one sessions</span></li>
+                            <li><i class="fas fa-check"></i> <span class="lang-it">Accesso a vita ai futuri update</span><span class="lang-en hidden">Lifetime access to future updates</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center">
+                        <a href="https://discord.gg/78g75d5pXj" target="_blank" class="px-8 py-3 rounded-lg bg-gradient-to-r from-sky-400 to-indigo-400 text-white font-medium hover:shadow-lg hover:shadow-sky-400/20 transition-all inline-block">
+                            <span class="lang-it">Ottieni l'Indicatore</span>
+                            <span class="lang-en hidden">Get the Indicator</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-sky-900/50 to-indigo-900/50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6 lang-it">Pronto a Entrare nel Club dell'1%?</h2>
+            <h2 class="text-3xl font-bold mb-6 lang-en hidden">Ready to Join the 1% Club?</h2>
+            
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto lang-it">Unisciti oggi stesso alla nostra community e scopri come l'indicatore Bullet & Time Shot può trasformare il tuo approccio al trading.</p>
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto lang-en hidden">Join our community today and discover how the Bullet & Time Shot indicator can transform your trading approach.</p>
+            
+            <a href="https://discord.gg/78g75d5pXj" target="_blank" class="btn-primary px-8 py-4 rounded-lg font-semibold text-white inline-block">
+                <span class="lang-it">Unisciti su Discord</span>
+                <span class="lang-en hidden">Join on Discord</span>
+                <i class="fab fa-discord ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social -->
+    <section id="contatti" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center lang-it">Seguici sui <span class="gradient-text">Social</span></h2>
+            <h2 class="text-3xl font-bold mb-12 text-center lang-en hidden">Follow Us on <span class="gradient-text">Social Media</span></h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                <a href="https://discord.gg/78g75d5pXj" class="card rounded-xl p-6 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors">
+                    <i class="fab fa-discord text-4xl text-indigo-400 mb-3"></i>
+                    <span class="font-medium">Discord</span>
+                </a>
+                <a href="http://t.me/Geixa_ITA" class="card rounded-xl p-6 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors">
+                    <i class="fab fa-telegram text-4xl text-sky-400 mb-3"></i>
+                    <span class="font-medium">Telegram</span>
+                </a>
+                <a href="https://www.instagram.com/gesualdo.briviz?igsh=MW5qcXdldm9xdWI4Ng==" class="card rounded-xl p-6 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors">
+                    <i class="fab fa-instagram text-4xl text-pink-400 mb-3"></i>
+                    <span class="font-medium">Instagram</span>
+                </a>
+                <a href="https://www.tiktok.com/@betheonepercent.official?_t=ZN-8w2czhVOp0w&_r=1" class="card rounded-xl p-6 flex flex-col items-center text-center hover:bg-slate-800/50 transition-colors">
+                    <i class="fab fa-tiktok text-4xl text-white mb-3"></i>
+                    <span class="font-medium">TikTok</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-700">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="h-8 w-8 rounded-full bg-gradient-to-r from-sky-400 to-indigo-400 flex items-center justify-center mr-2">
+                        <i class="fas fa-chart-line text-white text-sm"></i>
+                    </div>
+                    <h1 class="text-lg font-bold">Be The 1%</h1>
+                </div>
+                
+                <div class="text-sm text-slate-400">
+                    <span class="lang-it">&copy; 2025 Be The 1%. Tutti i diritti riservati.</span>
+                    <span class="lang-en hidden">&copy; 2025 Be The 1%. All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Add this mobile sidebar menu at the end of your body tag, before the scripts -->
+<div id="mobileSidebar" class="fixed inset-y-0 right-0 w-64 bg-slate-900 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+    <div class="p-6">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center">
+                <div class="h-8 w-8 rounded-full bg-gradient-to-r from-sky-400 to-indigo-400 flex items-center justify-center mr-2">
+                    <i class="fas fa-chart-line text-white text-sm"></i>
+                </div>
+                <h1 class="text-lg font-bold">Be The 1%</h1>
+            </div>
+            <button id="closeMobileMenu" class="text-slate-400 hover:text-white">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        
+        <nav class="flex flex-col space-y-4">
+            <a href="#servizi" class="mobile-nav-link">
+                <span class="lang-it">Servizi</span>
+                <span class="lang-en hidden">Services</span>
+            </a>
+            <a href="#risultati" class="mobile-nav-link">
+                <span class="lang-it">Risultati</span>
+                <span class="lang-en hidden">Results</span>
+            </a>
+            <a href="#testimonianze" class="mobile-nav-link">
+                <span class="lang-it">Testimonianze</span>
+                <span class="lang-en hidden">Testimonials</span>
+            </a>
+            <a href="#piani" class="mobile-nav-link">
+                <span class="lang-it">Piani</span>
+                <span class="lang-en hidden">Plans</span>
+            </a>
+            
+            <div class="pt-4 border-t border-slate-700 mt-4">
+                <button id="mobileLanguageSwitcher" class="flex items-center space-x-2 mobile-nav-link">
+                    <img id="mobileItalianFlag" src="https://flagcdn.com/w40/it.png" alt="Italian" class="w-6 h-4 rounded">
+                    <img id="mobileEnglishFlag" src="https://flagcdn.com/w40/gb.png" alt="English" class="w-6 h-4 rounded hidden">
+                    <span class="lang-it">Italiano</span>
+                    <span class="lang-en hidden">English</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Add overlay for mobile menu -->
+<div id="mobileOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Language switcher
+        document.getElementById('languageSwitcher').addEventListener('click', function() {
+            const italianFlag = document.getElementById('italianFlag');
+            const englishFlag = document.getElementById('englishFlag');
+            const italianElements = document.querySelectorAll('.lang-it');
+            const englishElements = document.querySelectorAll('.lang-en');
+            
+            if (italianFlag.classList.contains('hidden')) {
+                // Switch to Italian
+                italianFlag.classList.remove('hidden');
+                englishFlag.classList.add('hidden');
+                
+                italianElements.forEach(el => el.classList.remove('hidden'));
+                englishElements.forEach(el => el.classList.add('hidden'));
+                
+                document.documentElement.lang = 'it';
+            } else {
+                // Switch to English
+                italianFlag.classList.add('hidden');
+                englishFlag.classList.remove('hidden');
+                
+                italianElements.forEach(el => el.classList.add('hidden'));
+                englishElements.forEach(el => el.classList.remove('hidden'));
+                
+                document.documentElement.lang = 'en';
+            }
+        });
+        
+// Replace your current mobile menu toggle with this
+document.getElementById('mobileMenuButton').addEventListener('click', function() {
+    document.getElementById('mobileSidebar').classList.remove('translate-x-full');
+    document.getElementById('mobileOverlay').classList.remove('hidden');
+    document.body.classList.add('menu-open');
+});
+
+document.getElementById('closeMobileMenu').addEventListener('click', closeMobileMenu);
+document.getElementById('mobileOverlay').addEventListener('click', closeMobileMenu);
+
+// Close mobile menu when clicking a navigation link, EXCEPT the language switcher
+document.querySelectorAll('#mobileSidebar .mobile-nav-link').forEach(link => {
+    // Skip adding the close event to the language switcher
+    if (link.id !== 'mobileLanguageSwitcher') {
+        link.addEventListener('click', closeMobileMenu);
+    }
+});
+
+function closeMobileMenu() {
+    document.getElementById('mobileSidebar').classList.add('translate-x-full');
+    document.getElementById('mobileOverlay').classList.add('hidden');
+    document.body.classList.remove('menu-open');
+}
+
+// Mobile language switcher
+document.getElementById('mobileLanguageSwitcher').addEventListener('click', function(e) {
+    // Prevent the event from bubbling up
+    e.stopPropagation();
+    
+    const mobileItalianFlag = document.getElementById('mobileItalianFlag');
+    const mobileEnglishFlag = document.getElementById('mobileEnglishFlag');
+    const italianElements = document.querySelectorAll('.lang-it');
+    const englishElements = document.querySelectorAll('.lang-en');
+    
+    if (mobileItalianFlag.classList.contains('hidden')) {
+        // Switch to Italian
+        mobileItalianFlag.classList.remove('hidden');
+        mobileEnglishFlag.classList.add('hidden');
+        
+        // Also update the main language switcher
+        document.getElementById('italianFlag').classList.remove('hidden');
+        document.getElementById('englishFlag').classList.add('hidden');
+        
+        italianElements.forEach(el => el.classList.remove('hidden'));
+        englishElements.forEach(el => el.classList.add('hidden'));
+        
+        document.documentElement.lang = 'it';
+        
+        // Update chart if needed
+        if (typeof createChart === 'function' && typeof currentLang !== 'undefined') {
+            currentLang = 'it';
+            createChart('it');
+        }
+    } else {
+        // Switch to English
+        mobileItalianFlag.classList.add('hidden');
+        mobileEnglishFlag.classList.remove('hidden');
+        
+        // Also update the main language switcher
+        document.getElementById('italianFlag').classList.add('hidden');
+        document.getElementById('englishFlag').classList.remove('hidden');
+        
+        italianElements.forEach(el => el.classList.add('hidden'));
+        englishElements.forEach(el => el.classList.remove('hidden'));
+        
+        document.documentElement.lang = 'en';
+        
+        // Update chart if needed
+        if (typeof createChart === 'function' && typeof currentLang !== 'undefined') {
+            currentLang = 'en';
+            createChart('en');
+        }
+    }
+});
+
+
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Performance chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, 'rgba(56, 189, 248, 0.5)');
+        gradient.addColorStop(1, 'rgba(56, 189, 248, 0)');
+        
+        const months = {
+            'it': ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set'],
+            'en': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+        };
+        
+        let currentLang = 'it';
+        let chart;
+        
+        function createChart(lang) {
+            if (chart) {
+                chart.destroy();
+            }
+            
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months[lang],
+                    datasets: [{
+                        label: lang === 'it' ? 'Performance' : 'Performance',
+                        data: [2, 3.5, 3, 4.2, 3.8, 5.5, 4.8, 6.2, 7.1],
+                        borderColor: '#38bdf8',
+                        backgroundColor: gradient,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#38bdf8',
+                        pointBorderColor: '#0f172a',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.parsed.y}% ${lang === 'it' ? 'rendimento' : 'return'}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize chart
+        createChart('it');
+        
+        // Update chart when language changes
+        document.getElementById('languageSwitcher').addEventListener('click', function() {
+            currentLang = currentLang === 'it' ? 'en' : 'it';
+            createChart(currentLang);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'939e755533d1ed24',t:'MTc0NjI2MTY3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
